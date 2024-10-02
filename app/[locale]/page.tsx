@@ -8,7 +8,7 @@ interface PageProps {
   };
 }
 
-export default function Home({ params }: PageProps) {
+export default function LocalePage({ params }: PageProps) {
   const { locale } = params;
 
   console.log(locale);
