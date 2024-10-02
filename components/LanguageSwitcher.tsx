@@ -39,32 +39,30 @@ export default function LanguageSwitcher({ locale }: LanguageSwitcherProps) {
     return `/${newLocale}${pathWithoutLocale === "" ? "/" : pathWithoutLocale}`; // Add new locale and preserve the rest of the path
   };
 
-  if (!pathname) return <></>; // Ensure pathname is loaded before rendering
+  if (!pathname) return <>{null}</>; // Ensure pathname is loaded before rendering
 
   return (
-      <>
-        <Link href={getLocalePath("en")} locale="en">
-          <span className={currentLocale === "en" ? "active" : ""}>
-            English
-          </span>
-        </Link>
-        <br />
-        <br />
-        <Link href={getLocalePath("ro")} locale="ro">
-          <span className={currentLocale === "ro" ? "active" : ""}>Română</span>
-        </Link>
-        <div>
-          {loading && <p>Loading posts...</p>}
-          {error && <p>Error: {error}</p>}
-          <ul>
-            {posts.map((post:) => (
-              <li key={post.id}>
-                <h2>{post.title}</h2>
-                <p>{post.body}</p>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </>
+    <>
+      <Link href={getLocalePath("en")} locale="en">
+        <span className={currentLocale === "en" ? "active" : ""}>English</span>
+      </Link>
+      <br />
+      <br />
+      <Link href={getLocalePath("ro")} locale="ro">
+        <span className={currentLocale === "ro" ? "active" : ""}>Română</span>
+      </Link>
+      <div>
+        {loading && <p>Loading posts...</p>}
+        {error && <p>Error: {error}</p>}
+        <ul>
+          {posts.map((post) => (
+            <li key={post.id}>
+              <h2>{post.title}</h2>
+              <p>{post.body}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </>
   );
 }

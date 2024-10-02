@@ -1,5 +1,8 @@
 // app/layout.tsx
+"use client";
 import React from "react";
+import { Provider } from "react-redux";
+import { store } from "./store/store";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import localFont from "next/font/local";
 import "./globals.css";
@@ -30,7 +33,9 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <header>
-          <LanguageSwitcher locale={locale} />
+          <Provider store={store}>
+            <LanguageSwitcher locale={locale} />
+          </Provider>
         </header>
         {children}
       </body>
