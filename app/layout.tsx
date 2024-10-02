@@ -1,8 +1,9 @@
 // app/layout.tsx
 "use client";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Provider } from "react-redux";
 import { store } from "./store/store";
+import { usePathname } from "next/navigation";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import localFont from "next/font/local";
 import "./globals.css";
@@ -37,7 +38,7 @@ export default function RootLayout({
             <LanguageSwitcher locale={locale} />
           </Provider>
         </header>
-        {children}
+        {React.cloneElement(children as React.ReactElement, { locale })}
       </body>
     </html>
   );

@@ -1,14 +1,19 @@
 // app/[locale]/page.tsx
 
+import React from "react";
+
 interface PageProps {
   params: {
-    locale: "en" | "ro";
+    locale: string;
   };
 }
 
-export default function HomePage({ params }: PageProps) {
+export default function Home({ params }: PageProps) {
   const { locale } = params;
-  const content = {
+
+  console.log(locale);
+
+  const content: { [key: string]: { title: string; description: string } } = {
     en: {
       title: "Welcome",
       description: "This is the homepage in English",
@@ -18,6 +23,11 @@ export default function HomePage({ params }: PageProps) {
       description: "Aceasta este pagina principala in limba romana",
     },
   };
+
+  // Check if locale exists in content
+  if (!content[locale]) {
+    return <h1>Locale not found</h1>;
+  }
 
   return (
     <div>

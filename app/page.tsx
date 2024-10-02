@@ -1,11 +1,19 @@
 // app/page.tsx
-import { redirect } from "next/navigation";
+
+import React from "react";
 
 export default function Home() {
-  // Redirect to the English locale by default
+  const content = {
+    en: {
+      title: "Welcome",
+      description: "This is the homepage in English",
+    },
+  };
+
   return (
     <div>
-      <h1>Homepage Root Level</h1>
+      <h1>{content.en.title}</h1>
+      <p>{content.en.description}</p>
     </div>
   );
 }

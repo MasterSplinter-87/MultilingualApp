@@ -15,7 +15,7 @@ type LanguageSwitcherProps = {
   locale: "en" | "ro";
 };
 
-export default function LanguageSwitcher({ locale }: LanguageSwitcherProps) {
+export default function LanguageSwitcher({ locale }: any) {
   const [currentLocale, setCurrentLocale] = useState(locale); // Store the current locale
   const pathname = usePathname();
 

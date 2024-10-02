@@ -14,6 +14,11 @@ export function middleware(req: NextRequest) {
     return NextResponse.redirect(url);
   }
 
+  // If the path is `/`, continue to load the English page
+  if (pathname === "/") {
+    return NextResponse.next();
+  }
+
   // Allow `/ro` to proceed
   if (pathname === "/ro") {
     return NextResponse.next(); // No redirection needed
